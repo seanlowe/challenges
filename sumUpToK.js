@@ -6,8 +6,8 @@
 // but is inefficient with large data sets
 // probably O(n) time
 function kSum1(kVal) {
-	var list = [15, 27, 4, 11, 3, -10, 12, 7]
-	var temp = 0
+	const list = [15, 27, 4, 11, 3, -10, 12, 7]
+	let temp = 0
 	for (i = 0; i < list.length; i++) {
 		temp = kVal - list[i]
 		if (list.includes(temp)) {
@@ -19,7 +19,7 @@ function kSum1(kVal) {
 
 // slightly cleaner version of kSum1
 function kSum2(kVal) {
-	var list = [15, 4, 11, 3, -10, 12, 7, 27]
+	const list = [15, 4, 11, 3, -10, 12, 7, 27]
 	for (i in list) {
 		if (list.includes(kVal - list[i])) {
 			return true
@@ -33,12 +33,18 @@ function kSum2(kVal) {
 // could use raw output from filter if the results of query are needed in other calculations
 // or could overwrite old array (or save to new array) with data and check if a pair exists to return T / F
 function kSum3(kVal) {
-	var list = [15, 4, 11, 3, -10, 12, 7, 27]
-	// console.log(list.filter( a => list.includes(kVal-a) ))
+	let list = [15, 4, 11, 3, -10, 12, 7, 27]
 	list = list.filter( a => list.includes(kVal-a) )
-	return (list.length % 2 == 0) ? true : false // allows finding multiple pairs
+	return !!list.length
+}
+
+// use find to stop search upon finding first match
+function kSum4(kVal) {
+	var list = [15, 4, 11, 3, -10, 12, 7, 27]
+	return list.find( a => list.includes(kVal - a) ) !== undefined
 }
 
 // alert(kSum1(17))
 // alert(kSum2(17))
-alert(kSum3(19))
+// alert(kSum3(19))
+alert(kSum4(19))
