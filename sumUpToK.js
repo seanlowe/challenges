@@ -39,12 +39,17 @@ function kSum3(kVal) {
 }
 
 // use find to stop search upon finding first match
+// fails on kSum4(6) as it can check for 3 against itself
 function kSum4(kVal) {
 	var list = [15, 4, 11, 3, -10, 12, 7, 27]
 	return list.find( a => list.includes(kVal - a) ) !== undefined
 }
 
-// alert(kSum1(17))
-// alert(kSum2(17))
-// alert(kSum3(19))
-alert(kSum4(19))
+// fix for checking against itself
+function kSum5(kVal) {
+	var list = [15, 4, 11, 3, -10, 12, 7, 27]
+	let result = list.find((a, index) => list.slice(index + 1).includes(kVal - a)) !== undefined
+	return result
+}
+
+alert(kSum5(6))
