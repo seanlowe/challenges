@@ -1,5 +1,5 @@
 # challenges
-Small repo to host various programming challenges that I've been given or come across on the internet.
+Small repo to host random programming challenges or tinkering projects
 
 ### Sum Up to K challenge
 Prompt: Given a list of numbers and a number k, return whether any two numbers from the list add up to k.
